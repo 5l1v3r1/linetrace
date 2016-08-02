@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#heading {
+  font-size: 1.3em;
+  font-weight: normal;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+#listing {
+  margin: auto;
+}
+
+.line-drawing {
+  background-color: #f0f0f0;
+  width: 120px;
+  height: 120px;
+  margin: 10px 0;
+  border-radius: 3px;
+}

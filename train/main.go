@@ -10,6 +10,8 @@ import (
 	"github.com/unixpickle/linetrace"
 )
 
+const interpolationSpace = 12
+
 func main() {
 	if len(os.Args) != 3 {
 		fmt.Fprintln(os.Stderr, "Usage:", os.Args[0], "data.json output_rnn")
@@ -24,6 +26,9 @@ func main() {
 	if err := json.Unmarshal(sampleData, &paths); err != nil {
 		fmt.Fprintln(os.Stderr, "Failed to parse samples:", err)
 		os.Exit(1)
+	}
+	for i, x := range paths {
+		paths[i] = x.EvenInterpolation(interpolationSpace)
 	}
 	sampleSet := &linetrace.SampleSet{Paths: paths}
 

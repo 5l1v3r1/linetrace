@@ -53,8 +53,8 @@ func (s *SampleSet) GetSample(i int) interface{} {
 		if i+1 == len(path) {
 			output[2] = 1
 		} else {
-			output[0] = path[i+1].X
-			output[1] = path[i+1].Y
+			output[0] = path[i+1].X / underlyingImageSize
+			output[1] = path[i+1].Y / underlyingImageSize
 		}
 		sample.Outputs = append(sample.Outputs, output)
 	}

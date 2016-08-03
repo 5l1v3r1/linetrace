@@ -23,8 +23,8 @@ func imageFromGoImage(img image.Image, size int) *Image {
 	var idx int
 	for y := 0; y < size; y++ {
 		for x := 0; x < size; x++ {
-			r, g, b, _ := scaledImg.At(x, y).RGBA()
-			val := float64(r+g+b) / (0xffff * 3)
+			_, _, _, a := scaledImg.At(x, y).RGBA()
+			val := float64(a) / 0xffff
 			res.Values[idx] = val
 			idx++
 		}

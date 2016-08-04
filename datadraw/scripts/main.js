@@ -16,6 +16,7 @@
       var pre = document.createElement('pre');
       pre.textContent = JSON.stringify(paths);
       pre.style.textAlign = 'left';
+      pre.style.whiteSpace = 'pre-wrap';
       document.body.appendChild(pre);
     };
   }

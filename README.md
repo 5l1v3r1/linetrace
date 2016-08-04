@@ -7,10 +7,10 @@ It is easy for a human to trace out lines when they look at a handwritten letter
 The current solution uses gradient descent on the coordinates of vertices in potential paths. It does not do incredibly well, but here are some of the better reproduction results I've gotten:
 
 <table>
-  <th>
+  <tr>
     <td>Original</td>
     <td>Reconstructed Path</td>
-  </th>
+  </tr>
   <tr>
     <td><img src="results/0_orig.png"></td>
     <td><img src="results/0_repro.png"></td>

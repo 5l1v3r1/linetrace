@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"image/png"
 	"io/ioutil"
-	"log"
 	"math/rand"
 	"os"
 	"time"
@@ -31,23 +30,10 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	path := paths[rand.Intn(len(paths))]
 
-	cost := &linetrace.CorrelationCost{Image: path.Image(28)}
-	solution := make(linetrace.Path, 15)
-	for i := range solution {
-		solution[i].X = rand.Float64() * 120
-		solution[i].Y = rand.Float64() * 120
-	}
-	var lastCost float64
-	for i := 0; i < 5000; i++ {
-		grad := linetrace.Gradient(solution, cost)
-		linetrace.AddGradient(solution, grad, 200)
-		curCost := cost.Cost(solution)
-		log.Println("Epoch", i, "cost", cost.Cost(solution))
-		if curCost == lastCost {
-			break
-		}
-		lastCost = curCost
-	}
+	cost := &linetrace.CorrelationCost{Image: path.Image(24)}
+	solution := linetrace.SearchPath(cost, 12, 5, 0, 0, 120, 120)
+
+	fmt.Println("Solution cost:", cost.Cost(solution))
 
 	origOut, err := os.Create(os.Args[2])
 	if err != nil {
